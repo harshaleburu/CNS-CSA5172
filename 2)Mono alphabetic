@@ -1,0 +1,116 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+void main()
+{
+            int i,j,pt,a3,a4,a;
+            char a1[50],s1[10],a2[50],s2[50];
+
+            printf("Enter 0 for capital or 1 for Small latters\n");
+            printf("Enter ; at end of plaintext\n");
+
+            scanf("%d",&a);
+
+
+            switch(a)
+            {
+             case 0:
+             {
+                        for(i=0;i<26;i++)
+                        {
+                                    a1[i]=i+65;
+                                    printf("%c",a1[i]);
+
+                        }
+
+            printf("\nEnter values for each charater\n");
+
+                        for(i=0;i<26;i++)
+                        {
+
+                                    scanf("%c",&a2[i]);
+
+                        }
+
+             printf("\nEnter the plain text\n");
+
+
+                        for(i=0;i<100;i++)
+                        {
+                                    scanf("%c",&s1[i]);
+                                    if(s1[i]==';')
+                                         {     s1[i]='\0';
+                                                break; }
+
+                        }
+
+            a3=strlen(s1);
+            printf("\nThe cipher text is:");
+            for(i=0;i<a3;i++)
+
+                        {for(j=0;j<26;j++)
+
+                                    {       if(s1[i]==' ')
+                                                  { printf(" ");}
+
+                                           else if(s1[i]==a1[j])
+                                                {
+
+                                                    printf("%c",a2[j]);
+
+                                                }
+
+                                    }
+                        }
+                        break;   }
+              case 1:
+              {
+                        for(i=0;i<26;i++)
+                        {
+                                    a1[i]=i+97;
+                                    printf("%c",a1[i]);
+
+                        }
+
+                        printf("\nEnter values for each character\n");
+
+                        for(i=0;i<26;i++)
+                        {
+                                    scanf("%c",&a2[i]);
+
+                        }
+
+                         printf("\nEnter the plain text\n");
+                         for(i=0;i<26;i++)
+                        {
+                                    scanf("%c",&s2[i]);
+                                    if(s2[i]==';')
+                                         {     s2[i]='\0';
+                                                break; }
+
+
+                        }
+
+                        a4=strlen(s2);
+                        printf("\nThe cyfer text is:");
+
+                        for(i=0;i<a4;i++)
+
+                                    {          for(j=0;j<26;j++)
+
+                                           if(s2[i]==' ')
+                                                { printf(" ");}
+                                           else           {
+                                                            if(s2[i]==a1[j])
+                                                            {
+                                                            printf("%c",a2[j]);
+                                                            }
+
+                                                }
+                                    }
+                }
+               }
+getch();
+
+}
