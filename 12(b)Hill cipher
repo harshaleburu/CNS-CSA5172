@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to convert a character to its numerical equivalent
+int char_to_num(char c) {
+    return c - 'a';
+}
+
+// Function to convert a numerical value to its character equivalent
+char num_to_char(int num) {
+    return num + 'a';
+}
+
+// Function to calculate the modular inverse of a number with respect to 26
+int mod_inverse(int num) {
+    int inverse = -1;
+    for (int i = 1; i < 26; i++) {
+        if ((num*i) % 26 == 1) {
+            inverse = i;
+            break;
+        }
+    }
+    return inverse;
+}
+
+// Function to calculate the determinant of a 2x2 matrix
