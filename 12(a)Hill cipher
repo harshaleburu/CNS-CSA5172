@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to convert a character to its numerical equivalent
+int char_to_num(char c) {
+    return c - 'a';
+}
+
+// Function to convert a numerical value to its character equivalent
+char num_to_char(int num) {
+    return num + 'a';
+}
+
+// Function to encrypt a message using the Hill cipher with the given key
+void encrypt(char* message, int key[2][2]) {
+    int len = strlen(message);
+    int ciphertext[len];
+    
+    // Pad the message with 'x' if its length is not a multiple of 2
+    if (len % 2 != 0) {
+        message[len] = 'x';
+        len++;
+    }
+    
+    // Encrypt each pair of characters in the message
+    for (int i = 0; i < len; i += 2) {
+        int x1 = char_to_num(message[i]);
+        int x2 = char_to_num(message[i+1]);
+        ciphertext[i] = (key[0][0]*x1 + key[0][1]*x2) % 26;
+        ciphertext[i+1] = (key[1][0]*x1 + key[1][1]*x2) % 26;
+    }
+    
+    // Print the ciphertext
+    printf("Ciphertext: ");
+    for (int i = 0; i < len; i++) {
+        printf("%c", num_to_char(ciphertext[i]));
+    }
+    printf("\n");
+}
+
+int main() {
+    // Define the key
+    int key[2][2] = {{9, 4}, {5, 7}};
+    
+    // Define the message to be encrypted
+    char message[] = "meet me at the usual place at ten rather than eight oclock";
+    
+    // Encrypt the message using the Hill cipher with the key
+    encrypt(message, key);
+    
+    return 0;
+}
